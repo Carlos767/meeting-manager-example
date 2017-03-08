@@ -8,11 +8,11 @@
   </div>
   <div>
     <%= label_tag :start_time %>
-    <%= datetime_local_field_tag :start_time, @meeting.start_time || DateTime.now).strftime("%Y-%m-%dT%H:%M") %>
+    <%= datetime_local_field_tag :start_time, (@meeting.start_time || DateTime.now).strftime("%Y-%m-%dT%H:%M") %>
   </div>
   <div>
     <%= label_tag :end_time %>
-    <%= datetime_local_field_tag :end_time, @meeting.end_time || DateTime.now + 1.hour).strftime("%Y-%m-%dT%H:%M") %>
+    <%= datetime_local_field_tag :end_time, (@meeting.end_time || DateTime.now + 1.hour).strftime("%Y-%m-%dT%H:%M") %>
   </div>
   <div>
     <%= label_tag :notes %>
@@ -21,7 +21,4 @@
   <div>
     <%= label_tag :tags %>
     <%= select_tag :tags, options_from_collection_for_select(@tags, :id, :name, @meeting.tags.map {|tag| tag.id}), multiple: true %>
-  </div>
-  <div>
-    <%= submit_tag "Edit Meeting" %>
   </div>
